@@ -4,5 +4,7 @@ A simple implementation of Kalman filter in single object tracking
 
 ## use
 1.extract labels in /data/labels
+
 labels contain [0,x1,y1,x2,y2] (left top,right bottom)
+
 2.run main.py
