@@ -22,6 +22,7 @@ initial_target_box = [729, 238, 764, 339]  # 目标初始bouding box
 initial_box_state = xyxy_to_xywh(initial_target_box)
 initial_state = np.array([[initial_box_state[0], initial_box_state[1], initial_box_state[2], initial_box_state[3],
                            0, 0]]).T  # [中心x,中心y,宽w,高h,dx,dy]
+IOU_Threshold = 0.3 # 匹配时的阈值
 
 # 状态转移矩阵，上一时刻的状态转移到当前时刻
 A = np.array([[1, 0, 0, 0, 1, 0],
@@ -79,7 +80,7 @@ if __name__ == "__main__":
         label_file_path = os.path.join(label_path, file_name + "_" + str(frame_counter) + ".txt")
         with open(label_file_path, "r") as f:
             content = f.readlines()
-            max_iou = 0
+            max_iou = IOU_Threshold
             max_iou_matched = False
             # ---------使用最大IOU来寻找观测值------------
             for j, data_ in enumerate(content):
