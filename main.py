@@ -152,7 +152,7 @@ if __name__ == "__main__":
         if SAVE_VIDEO:
             out.write(frame)
         frame_counter = frame_counter + 1
-        if cv2.waitKey(0) & 0xFF == ord('q'):
+        if cv2.waitKey(10) & 0xFF == ord('q'):
             break
 
     # When everything done, release the capture
